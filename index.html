@@ -67,6 +67,11 @@
             margin-bottom: 20px;
         }
 
+        canvas {
+            display: block;
+            margin-top: 20px;
+        }
+
         /* Responsive design for mobile devices */
         @media (max-width: 768px) {
             h1 {
@@ -97,6 +102,53 @@
 
     <!-- Text box with title -->
     <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
+
+    <!-- Three.js game script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
+        document.body.appendChild(renderer.domElement);
+
+        const eggGeometry = new THREE.SphereGeometry(1, 32, 32);
+        const eggMaterial = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+        const egg = new THREE.Mesh(eggGeometry, eggMaterial);
+
+        const catGeometry = new THREE.BoxGeometry(1, 1, 1);
+        const catMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff});
+        const cat = new THREE.Mesh(catGeometry, catMaterial);
+
+        egg.position.set(-2, 0, 0);
+        cat.position.set(2, 0, 0);
+
+        scene.add(egg);
+        scene.add(cat);
+
+        camera.position.z = 5;
+
+        let points = 0;
+
+        const updatePoints = () => {
+            document.getElementById('points').innerText = points;
+        };
+
+        const collectPoints = () => {
+            points++;
+            updatePoints();
+        };
+
+        const animate = function () {
+            requestAnimationFrame(animate);
+            egg.rotation.x += 0.01;
+            egg.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
 
 </body>
 </html>
