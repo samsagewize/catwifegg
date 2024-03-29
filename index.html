@@ -109,13 +109,15 @@
     <!-- Simple Idle Game Section -->
     <div style="margin-top: 50px;">
         <h2>Simple Idle Game</h2>
-        <p>Click the button to collect points and make an egg appear!</p>
+        <p>Click the button to collect points and toggle between egg images!</p>
         <button id="idleButton" class="button">Click Me!</button>
         <div class="textbox">Points: <span id="points">0</span></div>
     </div>
 
     <script>
         let points = 0;
+        let eggImages = ['Screenshot 2024-03-29 110138.png', 'Screenshot 2024-03-29 110155.png'];
+        let currentImageIndex = 0;
 
         const updatePoints = () => {
             document.getElementById('points').innerText = points;
@@ -127,12 +129,15 @@
             
             // Create an egg element
             const eggElement = document.createElement('img');
-            eggElement.src = 'Screenshot 2024-03-29 110138.png';
+            eggElement.src = eggImages[currentImageIndex];
             eggElement.style.position = 'absolute';
             eggElement.style.left = `${Math.random() * (window.innerWidth - 50)}px`;
             eggElement.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
             eggElement.style.zIndex = '9999';
             document.body.appendChild(eggElement);
+
+            // Toggle between egg images
+            currentImageIndex = (currentImageIndex + 1) % eggImages.length;
 
             // Remove egg after 2 seconds
             setTimeout(() => {
