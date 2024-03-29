@@ -108,68 +108,45 @@
 
     <!-- Simple Idle Game Section -->
     <div style="margin-top: 50px;">
-        <h2>??</h2>
-        <p>Click the button to collect points!</p>
+        <h2>Simple Idle Game</h2>
+        <p>Click the button to collect points and make an egg appear!</p>
         <button id="idleButton" class="button">Click Me!</button>
-        <div class="textbox">Idle Points: <span id="idlePoints">0</span></div>
+        <div class="textbox">Points: <span id="points">0</span></div>
     </div>
 
-    <!-- Three.js game script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-
-        renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
-        document.body.appendChild(renderer.domElement);
-
-        const eggGeometry = new THREE.SphereGeometry(0.5, 16, 16);
-        const eggMaterial = new THREE.MeshBasicMaterial({color: 0xffff00});
-        const egg = new THREE.Mesh(eggGeometry, eggMaterial);
-
-        const catGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-        const catMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff});
-        const cat = new THREE.Mesh(catGeometry, catMaterial);
-
-        egg.position.set(-1, 0, 0);
-        cat.position.set(1, 0, 0);
-
-        scene.add(egg);
-        scene.add(cat);
-
-        camera.position.z = 5;
-
         let points = 0;
-        let idlePoints = 0;
 
         const updatePoints = () => {
             document.getElementById('points').innerText = points;
         };
 
-        const updateIdlePoints = () => {
-            document.getElementById('idlePoints').innerText = idlePoints;
-        };
-
         const collectPoints = () => {
             points++;
             updatePoints();
+            
+            // Create an egg element
+            const eggElement = document.createElement('img');
+            eggElement.src = 'https://via.placeholder.com/50?text=E';
+            eggElement.style.position = 'absolute';
+            eggElement.style.left = `${Math.random() * (window.innerWidth - 50)}px`;
+            eggElement.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+            eggElement.style.zIndex = '9999';
+            document.body.appendChild(eggElement);
+
+            // Remove egg after 2 seconds
+            setTimeout(() => {
+                document.body.removeChild(eggElement);
+            }, 2000);
         };
 
-        const collectIdlePoints = () => {
-            idlePoints++;
-            updateIdlePoints();
-        };
-
-        renderer.domElement.addEventListener('click', collectPoints);
-        document.getElementById('idleButton').addEventListener('click', collectIdlePoints);
-
-  
-
-        animate();
+        document.getElementById('idleButton').addEventListener('click', collectPoints);
     </script>
 
 </body>
 </html>
+
+
+
 
 
