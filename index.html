@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CatWifEgg</title>
-    <script src="https://threejs.org/build/three.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +16,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden;
+            background-image: url('data:image/png;base64,iVBORw0KGg...');
+            background-repeat: repeat;
         }
         
         @keyframes changeColor {
@@ -28,11 +28,19 @@
             100% { background-color: #ffcc00; }
         }
 
-        canvas {
-            width: 90%;
-            max-width: 400px;
+        h1 {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 90%; 
+            max-width: 400px; 
             height: auto;
             border-radius: 15px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
 
@@ -65,7 +73,7 @@
                 font-size: 24px;
             }
 
-            canvas {
+            img {
                 max-width: 300px;
             }
         }
@@ -76,78 +84,19 @@
     <!-- Cursive title -->
     <h1>CatWifEgg</h1>
 
-    <!-- Three.js canvas -->
-    <canvas id="threeCanvas"></canvas>
+    <!-- Using the provided image path -->
+    <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
+
+    <p>This is a photo of a cat with an egg. Isn't it cute?</p>
 
     <!-- Buttons with clickable links -->
     <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
-    <a href="javascript:void(0);" onclick="openModal()" class="button">Pump</a>
+    <a href="https://www.pump.fun/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Pump</a>
     <a href="https://t.co/m7BH7gJLvj" target="_blank" class="button">Telegram</a>
     <a href="https://solscan.io/token/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Solscan</a>
 
     <!-- Text box with title -->
     <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
-
-    <!-- Modal for Pump button content -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>Content for Pump button will be displayed here.</p>
-        </div>
-    </div>
-
-    <script>
-        let scene, camera, renderer;
-        let catModel;
-
-        // Initialize Three.js scene
-        function init() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('threeCanvas') });
-            renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
-
-            // Load the cat model
-            const loader = new THREE.GLTFLoader();
-            loader.load('path_to_cat_model.gltf', function (gltf) {
-                catModel = gltf.scene;
-                catModel.scale.set(0.1, 0.1, 0.1);
-                catModel.position.set(0, -2, -10);
-                scene.add(catModel);
-            });
-
-            camera.position.z = 5;
-
-            animate();
-        }
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-
-        // Open the modal
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
-
-        // Close the modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        // Close the modal when clicking outside of the modal content
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Initialize the Three.js scene
-        init();
-    </script>
 
 </body>
 </html>
