@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatWifEgg Idle Game</title>
+    <title>CatWifEgg</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,8 +16,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-image: url('data:image/png;base64,iVBORw0KGg...');
+            background-repeat: repeat;
         }
-
+        
         @keyframes changeColor {
             0% { background-color: #ffcc00; }
             25% { background-color: #00ffcc; }
@@ -72,20 +74,45 @@
             border: 5px solid #ffffff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            img {
+                max-width: 300px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Cursive title -->
-    <h1>CatWifEgg Idle Game</h1>
+    <h1>CatWifEgg</h1>
 
     <!-- Using the provided image path -->
     <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
 
-    <p>Click the egg and cat to collect points!</p>
+    <p>This is a photo of a cat with an egg. Isn't it cute?
+        Did u think the dev jeeted? </p>
 
-    <!-- Points display -->
-    <div class="textbox">Points: <span id="points">0</span></div>
+    <!-- Buttons with clickable links -->
+    <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
+    <a href="https://www.pump.fun/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Pump</a>
+    <a href="https://solscan.io/token/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Solscan</a>
+
+    <!-- Text box with title -->
+    <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
+
+    <!-- Simple Idle Game Section -->
+    <div style="margin-top: 50px;">
+        <h2>Simple Idle Game</h2>
+        <p>Click the button to collect points!</p>
+        <button id="idleButton" class="button">Click Me!</button>
+        <div class="textbox">Idle Points: <span id="idlePoints">0</span></div>
+    </div>
 
     <!-- Three.js game script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -114,9 +141,14 @@
         camera.position.z = 5;
 
         let points = 0;
+        let idlePoints = 0;
 
         const updatePoints = () => {
             document.getElementById('points').innerText = points;
+        };
+
+        const updateIdlePoints = () => {
+            document.getElementById('idlePoints').innerText = idlePoints;
         };
 
         const collectPoints = () => {
@@ -124,24 +156,18 @@
             updatePoints();
         };
 
-        renderer.domElement.addEventListener('click', (event) => {
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
+        const collectIdlePoints = () => {
+            idlePoints++;
+            updateIdlePoints();
+        };
 
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            raycaster.setFromCamera(mouse, camera);
-
-            const intersects = raycaster.intersectObjects([egg, cat]);
-
-            if (intersects.length > 0) {
-                collectPoints();
-            }
-        });
+        renderer.domElement.addEventListener('click', collectPoints);
+        document.getElementById('idleButton').addEventListener('click', collectIdlePoints);
 
         const animate = function () {
             requestAnimationFrame(animate);
+            egg.rotation.x += 0.01;
+            egg.rotation.y += 0.01;
             renderer.render(scene, camera);
         };
 
@@ -151,7 +177,4 @@
 </body>
 </html>
 
-
-</body>
-</html>
 
