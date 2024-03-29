@@ -8,39 +8,40 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #ffcc00; /* Initial background color */
-            animation: changeColor 10s infinite; /* Animation for changing background color */
+            background-color: #ffcc00;
+            animation: changeColor 10s infinite;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             margin: 0;
-            background-image: url('data:image/png;base64,iVBORw0KGg...'); /* Placeholder for egg borders */
+            background-image: url('data:image/png;base64,iVBORw0KGg...');
             background-repeat: repeat;
         }
         
         @keyframes changeColor {
-            0% { background-color: #ffcc00; } /* Initial color */
-            25% { background-color: #00ffcc; } /* Color change at 25% of animation duration */
-            50% { background-color: #cc00ff; } /* Color change at 50% of animation duration */
-            75% { background-color: #ff00cc; } /* Color change at 75% of animation duration */
-            100% { background-color: #ffcc00; } /* Back to initial color */
+            0% { background-color: #ffcc00; }
+            25% { background-color: #00ffcc; }
+            50% { background-color: #cc00ff; }
+            75% { background-color: #ff00cc; }
+            100% { background-color: #ffcc00; }
         }
 
         h1 {
-            font-family: 'Comic Sans MS', cursive; /* Using cursive font */
+            font-family: 'Comic Sans MS', cursive;
             font-size: 36px;
             margin-bottom: 20px;
         }
 
         img {
-            max-width: 80%; /* Adjust image size */
+            width: 90%; 
+            max-width: 400px; 
             height: auto;
-            border-radius: 15px; /* Rounded corners for clean border */
-            border: 5px solid #ffffff; /* White border around the image */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
-            margin-bottom: 20px; /* Space between image and text box */
+            border-radius: 15px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
 
         .button {
@@ -53,7 +54,7 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            margin-right: 10px; /* Space between buttons */
+            margin-right: 10px;
         }
 
         .button:hover {
@@ -64,6 +65,17 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 20px;
+        }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            img {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -80,6 +92,7 @@
     <!-- Buttons with clickable links -->
     <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
     <a href="https://www.pump.fun/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Pump</a>
+    <a href="https://t.co/m7BH7gJLvj" target="_blank" class="button">Telegram</a>
 
     <!-- Text box with title -->
     <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
