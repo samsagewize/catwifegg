@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>CatWifEgg</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #ffcc00; /* Initial background color */
+            animation: changeColor 10s infinite; /* Animation for changing background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
         }
+        
+        @keyframes changeColor {
+            0% { background-color: #ffcc00; } /* Initial color */
+            25% { background-color: #00ffcc; } /* Color change at 25% of animation duration */
+            50% { background-color: #cc00ff; } /* Color change at 50% of animation duration */
+            75% { background-color: #ff00cc; } /* Color change at 75% of animation duration */
+            100% { background-color: #ffcc00; } /* Back to initial color */
+        }
+
         img {
-            max-width: 100%;
+            max-width: 80%; /* Adjust image size */
             height: auto;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My Website!</h1>
-    
     <!-- Using the provided image path -->
     <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
 
