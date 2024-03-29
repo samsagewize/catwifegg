@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatWifEgg</title>
+    <title>CatWifHat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +15,8 @@
             align-items: center;
             height: 100vh; /* Full viewport height */
             margin: 0;
+            background-image: url('data:image/png;base64,iVBORw0KGg...'); /* Placeholder for egg borders */
+            background-repeat: repeat;
         }
         
         @keyframes changeColor {
@@ -29,6 +31,22 @@
             max-width: 80%; /* Adjust image size */
             height: auto;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -37,6 +55,9 @@
     <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
 
     <p>This is a photo of a cat with an egg. Isn't it cute?</p>
+
+    <!-- Button with a clickable link -->
+    <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
 
 </body>
 </html>
