@@ -18,6 +18,7 @@
             margin: 0;
             background-image: url('data:image/png;base64,iVBORw0KGg...');
             background-repeat: repeat;
+            overflow: hidden;
         }
         
         @keyframes changeColor {
@@ -26,6 +27,26 @@
             50% { background-color: #cc00ff; }
             75% { background-color: #ff00cc; }
             100% { background-color: #ffcc00; }
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wheel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotateWheel 20s linear infinite;
+        }
+
+        @keyframes rotateWheel {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         h1 {
@@ -77,6 +98,41 @@
                 max-width: 300px;
             }
         }
+
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -85,18 +141,61 @@
     <h1>CatWifEgg</h1>
 
     <!-- Using the provided image path -->
-    <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
-
-    <p>This is a photo of a cat with an egg. Isn't it cute?</p>
+    <div class="container">
+        <div class="wheel">
+            <img src="Screenshot 2024-03-29 012520.png" alt="Cat with Egg">
+            <p>This is a photo of a cat with an egg. Isn't it cute?</p>
+        </div>
+    </div>
 
     <!-- Buttons with clickable links -->
-    <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
-    <a href="https://www.pump.fun/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Pump</a>
-    <a href="https://t.co/m7BH7gJLvj" target="_blank" class="button">Telegram</a>
-    <a href="https://solscan.io/token/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Solscan</a>
+    <div class="container">
+        <div class="wheel">
+            <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
+            <a href="javascript:void(0);" onclick="openModal()" class="button">Pump</a>
+            <a href="https://t.co/m7BH7gJLvj" target="_blank" class="button">Telegram</a>
+            <a href="https://solscan.io/token/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Solscan</a>
+        </div>
+    </div>
 
     <!-- Text box with title -->
-    <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
+    <div class="container">
+        <div class="wheel">
+            <div class="textbox">CA: 6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA</div>
+        </div>
+    </div>
+
+    <!-- Modal for Pump button content -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Content for Pump button will be displayed here.</p>
+        </div>
+    </div>
+
+    <script>
+        // Open the modal
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Close the modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
