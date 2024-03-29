@@ -143,12 +143,24 @@
             updatePoints();
         };
 
-        renderer.domElement.addEventListener('click', collectPoints);
+        renderer.domElement.addEventListener('click', (event) => {
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObjects([egg, cat]);
+
+            if (intersects.length > 0) {
+                collectPoints();
+            }
+        });
 
         const animate = function () {
             requestAnimationFrame(animate);
-            egg.rotation.x += 0.01;
-            egg.rotation.y += 0.01;
             renderer.render(scene, camera);
         };
 
