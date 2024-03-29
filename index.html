@@ -108,7 +108,7 @@
 
     <!-- Simple Idle Game Section -->
     <div style="margin-top: 50px;">
-        <h2>Simple Idle Game</h2>
+        <h2>??</h2>
         <p>Click the button to collect points!</p>
         <button id="idleButton" class="button">Click Me!</button>
         <div class="textbox">Idle Points: <span id="idlePoints">0</span></div>
@@ -164,12 +164,7 @@
         renderer.domElement.addEventListener('click', collectPoints);
         document.getElementById('idleButton').addEventListener('click', collectIdlePoints);
 
-        const animate = function () {
-            requestAnimationFrame(animate);
-            egg.rotation.x += 0.01;
-            egg.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        };
+  
 
         animate();
     </script>
