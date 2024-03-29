@@ -70,6 +70,9 @@
         canvas {
             display: block;
             margin-top: 20px;
+            border-radius: 15px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Responsive design for mobile devices */
@@ -113,16 +116,16 @@
         renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
         document.body.appendChild(renderer.domElement);
 
-        const eggGeometry = new THREE.SphereGeometry(1, 32, 32);
-        const eggMaterial = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+        const eggGeometry = new THREE.SphereGeometry(0.5, 16, 16);
+        const eggMaterial = new THREE.MeshBasicMaterial({color: 0xffff00});
         const egg = new THREE.Mesh(eggGeometry, eggMaterial);
 
-        const catGeometry = new THREE.BoxGeometry(1, 1, 1);
+        const catGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         const catMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff});
         const cat = new THREE.Mesh(catGeometry, catMaterial);
 
-        egg.position.set(-2, 0, 0);
-        cat.position.set(2, 0, 0);
+        egg.position.set(-1, 0, 0);
+        cat.position.set(1, 0, 0);
 
         scene.add(egg);
         scene.add(cat);
@@ -140,6 +143,8 @@
             updatePoints();
         };
 
+        renderer.domElement.addEventListener('click', collectPoints);
+
         const animate = function () {
             requestAnimationFrame(animate);
             egg.rotation.x += 0.01;
@@ -152,3 +157,4 @@
 
 </body>
 </html>
+
