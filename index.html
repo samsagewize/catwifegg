@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatWifHat</title>
+    <title>My Colorful Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,7 @@
             background-color: #ffcc00; /* Initial background color */
             animation: changeColor 10s infinite; /* Animation for changing background color */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh; /* Full viewport height */
@@ -30,6 +31,9 @@
         img {
             max-width: 80%; /* Adjust image size */
             height: auto;
+            border-radius: 15px; /* Rounded corners for clean border */
+            border: 5px solid #ffffff; /* White border around the image */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
         }
 
         .button {
@@ -42,6 +46,7 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            margin-right: 10px; /* Space between buttons */
         }
 
         .button:hover {
@@ -56,8 +61,9 @@
 
     <p>This is a photo of a cat with an egg. Isn't it cute?</p>
 
-    <!-- Button with a clickable link -->
+    <!-- Buttons with clickable links -->
     <a href="https://twitter.com/CatWifEgg" target="_blank" class="button">X</a>
+    <a href="https://www.pump.fun/6ZfzXrCCufcjwAwhqS46KYpzXuApSJhFECeRFjKhDFQA" target="_blank" class="button">Pump</a>
 
 </body>
 </html>
